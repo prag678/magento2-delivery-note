@@ -1,0 +1,50 @@
+& when (@media-common = true) {
+    .field.delivery-note {
+        margin: 20px 0;
+        padding: 15px;
+        border: 1px solid @border-color__base;
+        border-radius: 6px;
+        background: #f9f9f9;
+
+        label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+            color: @text__color;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 80px;
+            border: 1px solid @border-color__base;
+            border-radius: 4px;
+            padding: 10px;
+            font-size: 14px;
+            line-height: 1.4;
+            resize: vertical;
+            background: @color-white;
+
+            &:focus {
+                border-color: @color-blue1;
+                outline: none;
+                box-shadow: 0 0 3px fade(@color-blue1, 40%);
+            }
+        }
+
+        button {
+            margin-top: 12px;
+            background: @color-blue1;
+            color: @color-white;
+            font-weight: 600;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all .3s;
+
+            &:hover {
+                background: darken(@color-blue1, 10%);
+            }
+        }
+    }
+}

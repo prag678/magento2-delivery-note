@@ -1,0 +1,50 @@
+<?php
+
+use Magento\Framework\Escaper;
+
+/**
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var Escaper $escaper
+ */
+
+$saveUrl = $block->getUrl('deliverynote/cart/save');
+?>
+
+<div class="field delivery-note">
+    <label for="delivery_note">
+        <?= $escaper->escapeHtml(__('Delivery Note')) ?>
+    </label>
+    <div class="control">
+        <textarea
+            name="delivery_note"
+            id="delivery_note"
+            rows="3"
+            placeholder="<?= $escaper->escapeHtml(__('Enter your delivery note here...')) ?>"></textarea>
+    </div>
+    <button type="button" id="save-delivery-note">
+        <?= $escaper->escapeHtml(__('Save Delivery Note')) ?>
+    </button>
+</div>
+
+<script>
+    require(['jquery'], function($) {
+        $('#save-delivery-note').on('click', function() {
+            $.ajax({
+                url: '<?= $escaper->escapeJs($saveUrl) ?>',
+                type: 'POST',
+                dataType: 'json',
+                data: { delivery_note: $('#delivery_note').val() },
+                success: function(response) {
+                    if(response.success) {
+                        alert(response.message);
+                    } else {
+                        alert('Error: ' + response.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert('AJAX Error: ' + error);
+                }
+            });
+        });
+    });
+</script>

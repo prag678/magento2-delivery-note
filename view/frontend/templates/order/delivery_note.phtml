@@ -1,0 +1,13 @@
+<?php
+/** @var \Magento\Sales\Model\Order $order */
+/** @var \Magento\Framework\Escaper $escaper */
+
+$order   = $block->getOrder();
+?>
+
+<?php if ($order->getDeliveryNote()): ?>
+    <div class="order-delivery-note">
+        <strong><?= $escaper->escapeHtml(__('Delivery note:')) ?></strong>
+        <div><?= $escaper->escapeHtml($order->getDeliveryNote()) ?></div>
+    </div>
+<?php endif; ?>
